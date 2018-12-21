@@ -1,9 +1,9 @@
 /**SECTION
  * J White
  * 12/12/18 - 12/13/2018
- * Write a JavaScript program to display the current day and time in the following format.
- * Sample Output : Today is : Tuesday. 
- * Current time is : 10 PM : 30 : 38 
+ * Goal - Write a JavaScript program to display the current day and time in the following format.
+ * Sample Output : Today is : Tuesday.
+ * Current time is : 10 PM : 30 : 38
  */
 
 // TIME Completed 4:30 PM - 12.13.2018
@@ -13,7 +13,8 @@ var today = todaysDate.getDay();                      // Returns the day of the 
 var hourNow = todaysDate.getHours();                  // Returns the hour (from 0-23)
 var minNow = todaysDate.getMinutes();                 // Returns the minutes (from 0-59)
 var secNow = todaysDate.getSeconds();                 // Returns the seconds (from 0-59)
-var newHour = hourNow - 12;                           // Takes time from 24 hours to 12 hours
+//var newHour = hourNow - 12;                           // Takes time from 24 hours to 12 hours
+var newHour = 0;
 
 //Converts the integer value from 'today' and prints out its text day of the week equalivent.
 switch(today)
@@ -32,22 +33,98 @@ switch(today)
     break;
     case 6: weekDay = "Saturday";
     break;
-
 }
 
 // prints out the current weekday.
 console.log("Today is: " + weekDay + "."); //
 
+    if (hourNow === 0 || hourNow === 00)
+    {
+        newHour = 12;
+        console.log(newHour + " AM : " + minNow + ": " + secNow);
+    }
 
-// check to convert the 24 hours into 12 hour time then prints out the time for AM or PM
-if (hourNow > 12 && newHour < 13)
+    else if(hourNow === 12)
+    {
+        newHour = 12;
+        console.log(newHour + " PM : " + minNow + ": " + secNow);
+    }
+
+    else if (hourNow > 12 && newHour < 13)
+    {
+        newHour = hourNow - 12;
+        console.log(newHour + " PM : " + minNow + ": " + secNow);
+    }
+
+    else
+    {
+        console.log(hourNow  + " AM : " + minNow + ": " + secNow);
+    }
+
+
+
+//NOTE /** Had to create a function instead of using me if statement */
+/* function amPM ()
 {
-    console.log(newHour + " PM : " + minNow + ": " + secNow);   
+    var newHour = 0;
+
+    if (hourNow === 0 || hourNow === 00)
+    {
+        newHour = 12;
+        console.log(newHour + " AM : " + minNow + ": " + secNow);
+    }
+
+    else if(hourNow === 12)
+    {
+        newHour = 12;
+        console.log(newHour + " PM : " + minNow + ": " + secNow);
+    }
+
+    else if (hourNow > 12 && newHour < 13)
+    {
+        console.log(newHour + " PM : " + minNow + ": " + secNow);
+    }
+
+    else
+    {
+        console.log(hourNow  + " AM : " + minNow + ": " + secNow);
+    }
+
+}
+ */
+// check to convert the 24 hours into 12 hour time then prints out the time for AM or PM
+/* if (hourNow > 12 && newHour < 13)
+{
+    newHour = hourNow - 12;
+    console.log(newHour + " PM : " + minNow + ": " + secNow);
 }
 else
 {
-    console.log(hourNow  + " AM : " + minNow + ": " + secNow);
+    if (hourNow === 0)
+    {
+        newHour = hourNow + 12;
+    }
+
+    console.log(newHour + " AM : " + minNow + ": " + secNow);
+} */
+
+//console.log(newHour)
+//amPM()
+
+/*
+// check to convert the 24 hours into 12 hour time then prints out the time for AM or PM
+if (hourNow > 12 && newHour < 13)
+{
+    console.log(newHour + " PM : " + minNow + ": " + secNow);
 }
+// else if (hourNow === 12)
+// {
+
+// }
+else
+{
+    console.log(hourNow  + " AM : " + minNow + ": " + secNow);
+} */
 
 //Old Code
 //var weekDay = 0;
@@ -90,30 +167,30 @@ else
 //   var second = today.getSeconds();
 //   var prepand = (hour >= 12)? " PM ":" AM ";
 //   hour = (hour >= 12)? hour - 12: hour;
-//   if (hour===0 && prepand===' PM ') 
-//   { 
+//   if (hour===0 && prepand===' PM ')
+//   {
 //   if (minute===0 && second===0)
-//   { 
+//   {
 //   hour=12;
 //   prepand=' Noon';
-//   } 
+//   }
 //   else
-//   { 
+//   {
 //   hour=12;
 //   prepand=' PM';
-//   } 
-//   } 
-//   if (hour===0 && prepand===' AM ') 
-//   { 
+//   }
+//   }
+//   if (hour===0 && prepand===' AM ')
+//   {
 //   if (minute===0 && second===0)
-//   { 
+//   {
 //   hour=12;
 //   prepand=' Midnight';
-//   } 
+//   }
 //   else
-//   { 
+//   {
 //   hour=12;
 //   prepand=' AM';
-//   } 
-//   } 
+//   }
+//   }
 // console.log("Current Time : "+hour + prepand + " : " + minute + " : " + second);
